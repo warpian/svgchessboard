@@ -1,0 +1,29 @@
+{
+  "name": "tt-chess-board",
+  "description": "## Embed a chess board in your Web page using Javascript and SVG",
+  "main": "static/svg.chessboard.js",
+  "author": "",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "grunt",
+    "clean": "rimraf dist/*",
+    "dist": "npm-run-all clean build"
+  },
+  "dependencies": {
+    "chess.js": "^0.12.1",
+    "svg.draggable.js": "^2.2.2",
+    "svg.js": "^2.7.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-browserify": "^6.0.0",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-copy-node-modules": "^0.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}

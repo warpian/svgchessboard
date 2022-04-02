@@ -23,14 +23,19 @@ The idea of the project is to use SVG capabilities to produce a flexible chessbo
 
 Install the component and its dependencies:
 
-    bower install svg.chessboard.js
+    npm install
+
+Package to dist folder
+
+    npm run dist
 
 Include this component after including the svg.js library and svg.draggable.js in your html document.
 
 ```html
+
 <script src="svg.js"></script>
 <script src="svg.draggable.js"></script>
-<script src="svg.chessboard.js"></script>
+<script src="static/svg.chessboard.js"></script>
 ```
 
 Insert a board container somewhere into your document.

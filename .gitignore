@@ -2,3 +2,5 @@
 /bower_components
 
 *.zip
+/dist/
+/node_modules/

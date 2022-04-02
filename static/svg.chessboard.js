@@ -1,5 +1,5 @@
 
-/**  
+/**
  * SvgChessBoard - v0.0.1 - 03/08/2016
  * {homepage}
  * Copyright (c) 2016 Philip Sylvain
@@ -155,7 +155,7 @@ function SvgChessBoard(id, options)
     var pieces = ['Rook', 'Knight', 'Bishop', 'Queen', 'King', 'Pawn'];
 
     var side='w';
-    
+
     var addImage = function(add) {
         var image = add.image(imageOptions.href, imageOptions.width, imageOptions.height);
         image.attr({x: imageOptions.x, y: imageOptions.y});
@@ -541,7 +541,6 @@ SvgChessBoard.prototype = {
     }
 
 };
-
 
 
 

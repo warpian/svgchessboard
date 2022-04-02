@@ -40,9 +40,9 @@
   </div>
 </div>
 
-<script type="text/javascript" src="bower_components/svg.js/dist/svg.js"></script>
-<script type="text/javascript" src="bower_components/svg.draggable.js/dist/svg.draggable.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+<script type="text/javascript" src="../node_modules/svg.js/dist/svg.js"></script>
+<script type="text/javascript" src="../node_modules/svg.draggable.js/dist/svg.draggable.js"></script>
+<script type="text/javascript" src="../node_modules/chess.js/chess.js"></script>
 <script type="text/javascript" src="svg.chessboard.js"></script>
 
 <script type="text/javascript">
@@ -54,7 +54,7 @@ window.onload = function() {
     pieceStyle : 'merida-outline-shadow'
   });
 
-  var typesCorrespondance = {
+  let typesCorrespondance = {
     'p' : 'Pawn',
     'n' : 'Knight',
     'b' : 'Bishop',
@@ -63,9 +63,9 @@ window.onload = function() {
     'k' : 'King'
   };
 
-  var position = new Chess();
+  let position = new Chess();
    // Put pieces on board
-  for (var i=0, piece= null; i < board.coordinates.length ; i++) {
+  for (let i=0, piece= null; i < board.coordinates.length ; i++) {
     piece = position.get(board.coordinates[i]);
     if (piece && typesCorrespondance[piece.type]) {
       board.addPiece(piece.color + typesCorrespondance[piece.type], board.coordinates[i]);
@@ -74,12 +74,12 @@ window.onload = function() {
 
   board.on('beforedrop', function(e) {
     // Check if we can drop a piece
-    var legalMoves = position.moves({ verbose: true });
-    var move = e.detail.move;
+    let legalMoves = position.moves({ verbose: true });
+    let move = e.detail.move;
     e.detail.candrop = false;
 
-    for (var i=0; i < legalMoves.length; i++ ) {
-      if (move.from == legalMoves[i].from && move.to == legalMoves[i].to) {
+    for (let i=0; i < legalMoves.length; i++ ) {
+      if (move.from === legalMoves[i].from && move.to === legalMoves[i].to) {
         e.detail.candrop = true;
         break;
       }
@@ -87,11 +87,11 @@ window.onload = function() {
   });
 
   board.on('afterdrop', function(e) {
-    var move = e.detail.move;
+    let move = e.detail.move;
 
-    if (move.to.charAt(1) == 8 && move.piece == 'wPawn' ) {
+    if (move.to.charAt(1) === 8 && move.piece === 'wPawn' ) {
       move.promotion = 'q';
-    } else if (move.to.charAt(1) == 1 && move.piece == 'bPawn' ) {
+    } else if (move.to.charAt(1) === 1 && move.piece === 'bPawn' ) {
       move.promotion = 'q';
     }
 
@@ -103,24 +103,24 @@ window.onload = function() {
 
     switch (move.flags) {
       case 'k' : // Kingside castling
-        if (move.color == 'w') {
+        if (move.color === 'w') {
           board.movePiece('h1', 'f1');
         } else {
           board.movePiece('h8', 'f8');
         }
         break;
       case 'q' : // Queenside castling
-        if (move.color == 'w') {
+        if (move.color === 'w') {
           board.movePiece('a1', 'd1');
         } else {
           board.movePiece('a8', 'd8');
         }
         break;
       case 'e' : // En passant capture
-        var captured = move.san.substring(2);
-        var file = captured.substring(0,1);
-        var rank = Number(captured.substring(1));
-        if (move.color == 'w') {
+        let captured = move.san.substring(2);
+        let file = captured.substring(0,1);
+        let rank = Number(captured.substring(1));
+        if (move.color === 'w') {
           board.removePiece(file+(rank-1));
         } else {
           board.removePiece(file+(rank+1));
